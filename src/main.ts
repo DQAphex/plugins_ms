@@ -5,7 +5,7 @@ import { AppModule } from './app.module.js';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  app.enableCors() 
   const config = new DocumentBuilder()
     .setTitle('Plugins Microservice API')
     .setDescription('API para gestión de plugins')
