@@ -129,7 +129,7 @@ export class PluginsController {
   }
 
   @Get('plugins/:pluginId/releases/:tag/download')
-  @ApiOperation({ summary: 'Descargar release' })
+  @ApiOperation({ summary: '[Sin Uso] Descargar release' })
   @ApiParam({ name: 'pluginId' })
   @ApiParam({ name: 'tag' })
   downloadRelease(@Param('pluginId') pluginId: string, @Param('tag') tag: string) {
@@ -145,7 +145,7 @@ export class PluginsController {
     @Param('workspaceId') workspaceId: string,
     @Body() createWorkspacePluginDto: CreateWorkspacePluginDto
   ) {
-    return this.pluginsService.installPlugin(workspaceId, createWorkspacePluginDto);
+    return this.pluginsService.installWorkspacesPlugins(workspaceId, createWorkspacePluginDto);
   }
 
   @Get('workspaces/:workspaceId/plugins')

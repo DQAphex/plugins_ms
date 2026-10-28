@@ -6,7 +6,7 @@ import {
 } from 'drizzle-orm/pg-core';
 
 import { plugins } from './plugins.schema.js';
-
+import { statusEnum } from './enums.js';
 export const workspacePlugins = pgTable(
   'workspace_plugins',
   {
@@ -30,6 +30,7 @@ export const workspacePlugins = pgTable(
     updatedAt: timestamp('updated_at')
       .defaultNow()
       .notNull()
+      
   },
   (table) => [
     uniqueIndex('workspace_plugins_unique_idx')

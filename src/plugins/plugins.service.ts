@@ -269,7 +269,7 @@ export class PluginsService {
   }
 
   // Plugins por workspace
-  async installPlugin(workspaceId: string, createWorkspacePluginDto: CreateWorkspacePluginDto) {
+  async installWorkspacesPlugins(workspaceId: string, createWorkspacePluginDto: CreateWorkspacePluginDto) {
     await this.findOne(createWorkspacePluginDto.pluginId);
     const [wp] = await this.db
       .insert(workspacePlugins)
@@ -330,7 +330,7 @@ export class PluginsService {
     const results = { successCount: 0, failedCount: 0, installed: [], failed: [] as any[] };
     for (const item of bulkInstallDto.plugins) {
       try {
-        await this.installPlugin(workspaceId, { workspaceId, pluginId: item.pluginId });
+        await this.installWorkspacesPlugins(workspaceId, { workspaceId, pluginId: item.pluginId });
         results.successCount++;
       } catch (e: any) {
         results.failedCount++;
